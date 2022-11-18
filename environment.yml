@@ -20,5 +20,5 @@ dependencies:
   - python-graphviz
   - jupyter_contrib_nbextensions
   - pip:
-   - sasdata
-   - sasmodels
+      - sasdata
+      - sasmodels
