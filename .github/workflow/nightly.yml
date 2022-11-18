@@ -1,11 +1,7 @@
 name: nightly
 
 on:
-  push:
-    branches:
-      - main
-      - release
-  pull_request:
+  [push, pull_request]
 
 jobs:
   simple_workflow:
