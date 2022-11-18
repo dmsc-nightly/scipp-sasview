@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  env_setup:
+  simple_workflow:
     name: Setups enviroment for scipp and sasview
     runs-on: ubuntu-latest
     defaults:
@@ -26,3 +26,6 @@ jobs:
           cache-env: false
           extra-specs: python=3.9
 
+      - run: python sans2d_to_I_of_Q.py # runs scipp script and generates test.h5 file
+
+      - run: python sasmodels_fit.py #runs sasview/sasmodels script by reading in test.h5 and fitting some model (fit is shit!)
