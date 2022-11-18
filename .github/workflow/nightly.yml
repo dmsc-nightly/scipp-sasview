@@ -1,0 +1,28 @@
+name: nightly
+
+on:
+  push:
+    branches:
+      - main
+      - release
+  pull_request:
+
+jobs:
+  env_setup:
+    name: Setups enviroment for scipp and sasview
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}  # required for conda env
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Setup conda environment
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          micromamba-version: 0.23.0
+          environment-file: environment.yml
+          cache-env: false
+          extra-specs: python=3.9
+
