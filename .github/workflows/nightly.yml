@@ -20,7 +20,7 @@ jobs:
       - name: Setup conda environment
         uses: mamba-org/provision-with-micromamba@main
         with:
-          micromamba-version: 1.0
+          micromamba-version: 0.23.0
           environment-file: environment.yml
           cache-env: false
           extra-specs: python=3.8
