@@ -7,10 +7,7 @@ channels:
   - mantid
 
 dependencies:
-  - ess=0.9
-  - scipp=0.16.4
-  - scippneutron=0.9.4
-  - scippnexus=0.3.2
+  - ess
   - astropy
   - matplotlib
   - tifffile
