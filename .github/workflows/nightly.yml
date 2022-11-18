@@ -1,7 +1,11 @@
 name: nightly
 
 on:
-  [push, pull_request]
+  push:
+    branches:
+      - main
+      - release
+  pull_request:
 
 jobs:
   simple_workflow:
@@ -19,7 +23,7 @@ jobs:
           micromamba-version: 0.23.0
           environment-file: environment.yml
           cache-env: false
-          extra-specs: python=3.9
+          extra-specs: python=3.8
 
       - name: Fetch scipp/ess repository
         run: git clone --depth=50 --branch=main https://github.com/scipp/ess.git
