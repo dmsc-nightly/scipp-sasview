@@ -31,12 +31,12 @@ jobs:
       - name: Converting notebook to python script
         run: |
           cd ess/docs/instruments/loki
-          jupyter nbconvert --to script sans2d_to_I_of_Q.ipynb
+          jupyter nbconvert --to script sans2d_reduction.ipynb
 
       - name: Data reduction with scipp
         run: |
-          python ess/docs/instruments/loki/sans2d_to_I_of_Q.py # runs scipp script and generates test.h5 file
+          python ess/docs/instruments/loki/sans2d_reduction.py # runs scipp script and generates test.nxs file
 
       - name: SasView fitting
         run: |
-          python sasmodels_fit.py #runs sasview/sasmodels script by reading in test.h5 and fitting some model (fit is shit!)
+          python sasmodels_fit.py #runs sasview/sasmodels script by reading in test.nxs and fitting some model (fit is shit!)
