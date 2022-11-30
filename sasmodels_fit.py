@@ -12,21 +12,24 @@ data = loader.load('test.nxs')
 #data = load_data('test_data.txt')
 
 data = data[0]
-data.qmin = 0.0229
-data.qmax = 0.151
+data.qmin = 0.0206
+data.qmax = 0.294
 
-kernel = load_model('sphere@hardsphere')
-pars = dict(radius=29,
-            background=18.0,
-            scale=2.96,
-            sld=3.83,
-            sld_solvent=14.73,
-            radius_effective=36.72,
-            volfraction=0.258)
+kernel = load_model('core_shell_sphere@hardsphere')
+pars = dict(radius=17,
+            thickness=19,
+            background=7.32,
+            scale=21.84,
+            sld_core=1,
+            sld_shell=11,
+            sld_solvent=13,
+            radius_effective=37.073,
+            volfraction=0.263)
 model = Model(kernel, **pars)
 
 # SET THE FITTING PARAMETERS
-model.radius.range(25, 35)
+model.radius.range(16, 18)
+model.thickness.range(18, 21)
 
 M = Experiment(data=data, model=model)
 problem = FitProblem(M)
