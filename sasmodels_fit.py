@@ -6,6 +6,8 @@ from bumps.names import *
 from bumps.fitters import fit
 #from bumps.formatnum import format_uncertainty
 
+import numpy as np
+
 
 loader = Loader()
 data = loader.load('test.nxs')
@@ -34,5 +36,8 @@ model.thickness.range(18, 21)
 M = Experiment(data=data, model=model)
 problem = FitProblem(M)
 print(f"Initial chisq {problem.chisq()}")
-result = fit(problem, method='amoeba')
+result = fit(problem, method='lm')
 print(f"Final chisq {problem.chisq()}")
+
+#Checking if chi2 gives expected value
+np.testing.assert_almost_equal(problem.chisq() ,33.72, 2)
