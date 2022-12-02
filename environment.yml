@@ -1,0 +1,25 @@
+name: enviroment
+
+channels:
+  - conda-forge
+  - scipp
+  - nodefaults
+  - mantid
+
+dependencies:
+  - ess=0.9
+  - astropy
+  - matplotlib
+  - tifffile
+  - jupyterlab
+  - jupyterlab_widgets
+  - pythreejs
+  - scipy
+  - ipympl
+  - mantid
+  - python-graphviz
+  - jupyter_contrib_nbextensions
+  - pip:
+      - sasdata
+      - sasmodels
+      - bumps

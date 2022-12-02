@@ -1,0 +1,42 @@
+name: nightly
+
+on:
+  push:
+    branches:
+      - main
+      - release
+  pull_request:
+
+jobs:
+  simple_workflow:
+    name: Setups enviroment for scipp and sasview
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}  # required for conda env
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup conda environment
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          micromamba-version: 0.27.0
+          environment-file: environment.yml
+          cache-env: false
+          extra-specs: python=3.8
+
+      - name: Fetch scipp/ess repository
+        run: git clone --depth=50 --branch=sans_file_saving https://github.com/scipp/ess.git
+
+      - name: Converting notebook to python script
+        run: |
+          cd ess/docs/instruments/loki
+          jupyter nbconvert --to script sans2d_reduction.ipynb
+
+      - name: Data reduction with scipp
+        run: |
+          python ess/docs/instruments/loki/sans2d_reduction.py # runs scipp script and generates test.nxs file
+
+      - name: SasView fitting
+        run: |
+          python sasmodels_fit.py #runs sasview/sasmodels script by reading in test.nxs and fitting some model (fit is shit!)
