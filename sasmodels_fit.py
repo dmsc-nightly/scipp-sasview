@@ -40,4 +40,4 @@ result = fit(problem, method='lm')
 print(f"Final chisq {problem.chisq()}")
 
 #Checking if chi2 gives expected value
-np.testing.assert_almost_equal(problem.chisq() ,33.72, 2)
+np.testing.assert_almost_equal(problem.chisq() ,33.795, 3)
