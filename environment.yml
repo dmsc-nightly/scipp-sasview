@@ -9,10 +9,6 @@ channels:
 dependencies:
   - ess=0.9
   - jupyterlab
-  - jupyterlab_widgets
-  - pythreejs
-  - scipy
-  - ipympl
   - mantid
   - pip:
       - sasdata
