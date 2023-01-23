@@ -10,7 +10,7 @@ channels:
   - nodefaults
 
 dependencies:
-  - ess
+  - ess>0.9
   - jupyterlab
   - mantid
   - pytest
