@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2023 dmsc-nightly contributors (https://github.com/dmsc-nightly)
+
+name: environment
+
+channels:
+  - conda-forge
+  - scipp
+  - mantid
+  - nodefaults
+
+dependencies:
+  - ess
+  - jupyterlab
+  - mantid
+  - pytest
+  - pip:
+      - sasdata
+      - sasmodels
+      - bumps

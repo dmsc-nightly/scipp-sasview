@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2023 dmsc-nightly contributors (https://github.com/dmsc-nightly)
+
 name: nightly
 
 on:
@@ -20,8 +23,8 @@ jobs:
       - name: Setup conda environment
         uses: mamba-org/provision-with-micromamba@main
         with:
-          micromamba-version: 0.27.0
-          environment-file: environment.yml
+          micromamba-version: 1.1.0
+          environment-file: .buildconfig/environment.yml
           cache-env: false
           extra-specs: python=3.8
 
@@ -35,8 +38,7 @@ jobs:
 
       - name: Data reduction with scipp
         run: |
-          python ess/docs/instruments/loki/sans2d_reduction.py # runs scipp script and generates test.nxs file
+          python ess/docs/instruments/loki/sans2d_reduction.py
 
-      - name: SasView fitting
-        run: |
-          python sasmodels_fit.py #runs sasview/sasmodels script by reading in test.nxs and fitting some model (fit is shit!)
+      - name: Python tests
+        run: python -m pytest -v tests
