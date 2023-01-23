@@ -17,8 +17,6 @@ dependencies:
   - scipy
   - ipympl
   - mantid
-  - python-graphviz
-  - jupyter_contrib_nbextensions
   - pip:
       - sasdata
       - sasmodels
