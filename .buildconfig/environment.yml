@@ -11,9 +11,11 @@ channels:
 
 dependencies:
   - ess>0.9
+  - ipympl
   - jupyterlab
   - mantid
   - pytest
+  - pythreejs
   - pip:
       - sasdata
       - sasmodels
