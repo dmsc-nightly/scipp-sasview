@@ -1,0 +1,12 @@
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = "tests"
+addopts = """
+--strict-config
+--strict-markers
+-ra
+-v
+"""
+filterwarnings = [
+  "error",
+  "ignore::UserWarning",]
