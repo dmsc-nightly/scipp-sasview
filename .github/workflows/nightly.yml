@@ -29,10 +29,7 @@ jobs:
 
       - name: Replace pip pytest with conda pytest
         run: |
-          pip uninstall -y pytest
-          conda list
-          conda remove -n environment pytest
-          conda list
+          python -m pip uninstall -y pytest
           conda install -y -c conda-forge pytest=7.2.1
 
       - name: Fetch scipp/ess repository
