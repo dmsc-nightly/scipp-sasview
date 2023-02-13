@@ -14,7 +14,7 @@ import numpy as np
 def test_hardsphere_fit():
 
     loader = Loader()
-    data = loader.load('../test.nxs')
+    data = loader.load('test.nxs')
 
     data = data[0]
     data.qmin = 0.0206

@@ -42,6 +42,4 @@ jobs:
         run: python ess/docs/instruments/loki/sans2d_reduction.py
 
       - name: Python tests
-        run: |
-          conda list
-          python -m pytest -v tests
+        run: python -m pytest -v tests
