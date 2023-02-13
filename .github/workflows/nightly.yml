@@ -24,12 +24,15 @@ jobs:
         with:
           micromamba-version: 1.1.0
           environment-file: .buildconfig/environment.yml
-          cache-env: false
+          cache-env: true
           extra-specs: python=3.8
 
       - name: Replace pip pytest with conda pytest
         run: |
           pip uninstall -y pytest
+          conda list
+          conda remove -n environment pytest
+          conda list
           conda install -y -c conda-forge pytest=7.2.1
 
       - name: Fetch scipp/ess repository
@@ -42,4 +45,6 @@ jobs:
         run: python ess/docs/instruments/loki/sans2d_reduction.py
 
       - name: Python tests
-        run: python -m pytest -v tests
+        run: |
+          conda list
+          python -m pytest -v tests
