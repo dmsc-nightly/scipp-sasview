@@ -19,6 +19,7 @@ dependencies:
   - pytest=7.2.1
   - python=3.8
   - pythreejs=2.4.1
+  - scipp==22.11.0
   - pip:
       - sasdata
       - sasmodels

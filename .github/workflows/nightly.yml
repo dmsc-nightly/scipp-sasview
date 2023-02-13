@@ -27,6 +27,11 @@ jobs:
           cache-env: false
           extra-specs: python=3.8
 
+      - name: Replace pip pytest with conda pytest
+        run: |
+          pip uninstall pytest
+          conda install -c conda-forge pytest=7.2.1
+
       - name: Fetch scipp/ess repository
         run: git clone --depth=50 --branch=sans_file_saving https://github.com/scipp/ess.git
 
