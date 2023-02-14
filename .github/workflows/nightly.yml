@@ -1,0 +1,41 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2023 dmsc-nightly contributors (https://github.com/dmsc-nightly)
+
+name: nightly
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: '0 1 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}  # required for conda env
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup conda environment
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          micromamba-version: 1.1.0
+          environment-file: .buildconfig/environment.yml
+          cache-env: true
+          extra-specs: python=3.8
+
+      - name: Fetch scipp/ess repository
+        run: git clone --depth=50 --branch=sans_file_saving https://github.com/scipp/ess.git
+
+      - name: Converting notebook to python script
+        run: jupyter nbconvert --to script ess/docs/instruments/loki/sans2d_reduction.ipynb
+
+      - name: Data reduction with scipp
+        run: python ess/docs/instruments/loki/sans2d_reduction.py
+
+      - name: Python tests
+        run: python -m pytest -v tests
