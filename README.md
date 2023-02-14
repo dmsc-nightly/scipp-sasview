@@ -1,4 +1,4 @@
-![scipp-sasview](https://github.com/dmsc-nightly/scipp-sasview/actions/workflows/nightly.yml/badge.svg?branch=main)
+[![scipp-sasview](https://github.com/dmsc-nightly/scipp-sasview/actions/workflows/nightly.yml/badge.svg?branch=main)](https://github.com/dmsc-nightly/scipp-sasview/actions)
 
 # scipp-sasview
 Testing the Scipp-Sasview interface
