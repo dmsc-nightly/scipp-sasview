@@ -33,7 +33,7 @@ jobs:
           conda install -y -c conda-forge pytest=7.2.1
 
       - name: Fetch scipp/ess repository
-        run: git clone --depth=50 --branch=sans_file_saving https://github.com/scipp/ess.git
+        run: git clone --depth=50 https://github.com/scipp/ess.git
 
       - name: Converting notebook to python script
         run: jupyter nbconvert --to script ess/docs/instruments/loki/sans2d_reduction.ipynb
